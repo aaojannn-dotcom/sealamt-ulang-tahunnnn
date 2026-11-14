@@ -3,74 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUPER PARTY! Happy Birthday! 🎂🎉</title>
+<title>Happy Birthday! 🐸🍀🎂</title>
 <style>
   @import url('https://googleapis.com');
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Fredoka',sans-serif; }
-  body { background:linear-gradient(-45deg,#ff9a9e,#fecfef,#a1c4fd,#ffecd2); background-size:400% 400%; animation:bgDisco 8s ease infinite; min-height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; padding:16px; }
-  .bg { position:fixed; font-size:52px; animation:joget 2s ease-in-out infinite; pointer-events:none; z-index:2; filter:drop-shadow(0 6px 12px rgba(0,0,0,0.15)); }
-  .s1{top:4%;left:4%} .s2{top:4%;right:4%;animation-delay:.3s} .s3{bottom:4%;left:4%;animation-delay:.6s} .s4{bottom:4%;right:4%;animation-delay:.9s}
-  .s5{top:45%;left:2%;animation-delay:.2s} .s6{top:45%;right:2%;animation-delay:.7s}
-  .card { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:26px 20px; border-radius:32px; box-shadow:0 20px 50px rgba(255,71,126,0.35); text-align:center; max-width:430px; width:100%; position:relative; z-index:20; border:4px solid #fff; }
+  body { background:linear-gradient(-45deg,#d8f3dc,#b7e4c7,#95d5b2,#e9edc9); background-size:400% 400%; animation:bgFlow 9s ease infinite; min-height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; padding:16px; }
+  .bg { position:fixed; font-size:50px; animation:goyang 2.4s ease-in-out infinite; pointer-events:none; z-index:2; filter:drop-shadow(0 6px 10px rgba(27,67,50,0.15)); }
+  .s1{top:5%;left:5%} .s2{top:5%;right:5%;animation-delay:.4s} .s3{bottom:5%;left:5%;animation-delay:.8s} .s4{bottom:5%;right:5%;animation-delay:1.2s}
+  .s5{top:46%;left:2%;animation-delay:.2s} .s6{top:46%;right:2%;animation-delay:.6s}
+  .card { background:rgba(250,255,252,0.96); backdrop-filter:blur(10px); padding:24px 22px 28px; border-radius:36px; box-shadow:0 22px 50px rgba(45,106,79,0.28); text-align:center; max-width:420px; width:100%; position:relative; z-index:20; border:5px solid #74c69d; }
+  .bar-wrap { width:100%; height:10px; background:#d8f3dc; border-radius:20px; overflow:hidden; margin-bottom:14px; }
+  .bar-fill { height:100%; width:10%; background:linear-gradient(90deg,#52b788,#2d6a4f); border-radius:20px; transition:width 0.4s ease; }
   .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-  .prog { font-size:13px; font-weight:700; color:#ff477e; background:#fff0f5; padding:6px 14px; border-radius:20px; }
-  .mbtn { font-size:12px; font-weight:700; color:#5c4000; background:linear-gradient(45deg,#ffd166,#ff9f1c); padding:7px 14px; border-radius:20px; border:none; cursor:pointer; box-shadow:0 4px 12px rgba(255,159,28,0.4); }
-  .sl { display:none; } .sl.act { display:block; animation:smoothIn 0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
-  .stk { font-size:115px; line-height:1.1; margin-bottom:10px; display:inline-block; animation:joget 1.4s ease-in-out infinite; filter:drop-shadow(0 10px 16px rgba(255,71,126,0.25)); cursor:pointer; }
-  h2 { color:#ff477e; font-size:25px; margin-bottom:8px; }
-  p { color:#444; font-size:15.5px; line-height:1.55; margin-bottom:18px; }
-  .box { background:#fff5f8; padding:15px; border-radius:22px; margin-bottom:15px; border:3px dashed #ff477e; cursor:pointer; color:#d6336c; font-weight:700; }
+  .prog { font-size:13px; font-weight:700; color:#2d6a4f; background:#d8f3dc; padding:6px 14px; border-radius:20px; }
+  .mbtn { font-size:12px; font-weight:700; color:#1b4332; background:#b7e4c7; padding:6px 14px; border-radius:20px; border:2px solid #52b788; cursor:pointer; }
+  .sl { display:none; } .sl.act { display:block; animation:muncul 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .stk-box { background:linear-gradient(180deg,#e9f5db,#d8f3dc); border-radius:28px; padding:14px; margin-bottom:14px; border:2px solid #b7e4c7; }
+  .stk { font-size:110px; line-height:1.1; display:inline-block; animation:goyang 1.6s ease-in-out infinite; filter:drop-shadow(0 8px 14px rgba(45,106,79,0.2)); }
+  h2 { color:#1b4332; font-size:24px; margin-bottom:8px; }
+  p { color:#3a5a40; font-size:15.5px; line-height:1.55; margin-bottom:18px; }
+  .box { background:#e9f5db; padding:15px; border-radius:22px; margin-bottom:15px; border:3px dashed #52b788; cursor:pointer; color:#1b4332; font-weight:700; }
   .grid { display:flex; justify-content:center; gap:12px; margin-bottom:12px; }
-  .kado { font-size:60px; cursor:pointer; background:#fff0f5; padding:10px 14px; border-radius:22px; border:2px solid #ff85a1; transition:0.3s; animation:joget 2s infinite; }
-  .kado:hover { transform:scale(1.15); }
-  .hadiah { display:none; background:linear-gradient(180deg,#fff0f5,#ffe5ec); padding:14px; border-radius:24px; margin-bottom:12px; border:3px solid #ff477e; animation:smoothIn 0.45s ease; }
-  .ghadiah { font-size:110px; line-height:1.1; display:block; margin-bottom:4px; animation:joget 1s infinite; }
+  .kado { font-size:58px; cursor:pointer; background:#d8f3dc; padding:10px 14px; border-radius:24px; border:3px solid #74c69d; transition:0.3s; animation:goyang 2s infinite; }
+  .kado:hover { transform:scale(1.12); background:#b7e4c7; }
+  .hadiah { display:none; background:linear-gradient(180deg,#d8f3dc,#b7e4c7); padding:14px; border-radius:24px; margin-bottom:12px; border:3px solid #40916c; animation:muncul 0.45s ease; }
+  .ghadiah { font-size:108px; line-height:1.1; display:block; margin-bottom:4px; animation:goyang 1.1s infinite; }
   .nav { display:flex; gap:10px; }
-  .nav button { background:linear-gradient(45deg,#ff477e,#ff758f); color:#fff; border:none; padding:14px; font-size:16px; font-weight:700; border-radius:50px; cursor:pointer; flex:1; box-shadow:0 8px 20px rgba(255,71,126,0.4); }
-  .nav .bk { background:#ffe5ec; color:#d6336c; flex:0.35; box-shadow:none; }
+  .nav button { background:linear-gradient(45deg,#40916c,#2d6a4f); color:#fff; border:none; padding:14px; font-size:16px; font-weight:700; border-radius:50px; cursor:pointer; flex:1; box-shadow:0 8px 20px rgba(45,106,79,0.35); }
+  .nav .bk { background:#d8f3dc; color:#1b4332; flex:0.35; box-shadow:none; }
   canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10; }
-  @keyframes bgDisco { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-  @keyframes smoothIn { 0%{opacity:0;transform:translateY(20px) scale(0.9)} 100%{opacity:1;transform:translateY(0) scale(1)} }
-  @keyframes joget { 0%,100%{transform:rotate(-8deg) scale(1)} 50%{transform:rotate(8deg) scale(1.1)} }
+  @keyframes bgFlow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  @keyframes muncul { 0%{opacity:0;transform:translateY(18px) scale(0.92)} 100%{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes goyang { 0%,100%{transform:rotate(-7deg) scale(1)} 50%{transform:rotate(7deg) scale(1.08)} }
 </style>
 </head>
 <body>
-<div class="bg s1">🎈</div><div class="bg s2">🧸</div><div class="bg s3">🎉</div>
-<div class="bg s4">🥳</div><div class="bg s5">🍰</div><div class="bg s6">🎁</div>
+<div class="bg s1">🐸</div><div class="bg s2">🦖</div><div class="bg s3">🍀</div>
+<div class="bg s4">🧋</div><div class="bg s5">🥑</div><div class="bg s6">🌱</div>
 <canvas id="kf"></canvas>
 <div class="card">
+  <div class="bar-wrap"><div class="bar-fill" id="bar"></div></div>
   <div class="top">
-    <div class="prog" id="ind">Slide 1 / 10</div>
-    <button type="button" class="mbtn" id="bm" onclick="toggleLagu()">🎶 Putar Lagu Nonstop</button>
+    <div class="prog" id="ind">Kartu 1 / 10</div>
+    <button type="button" class="mbtn" id="bm" onclick="toggleLagu()">🔊 Lagu Otomatis ON</button>
   </div>
-  <div class="sl act"><div class="stk">🎊🐱🎂</div><h2>WAAAH! ADA PESTA NIH!</h2><p>Pencet tombol di bawah buat nyalain <b>Lagu Nonstop</b> & buka 10 kartu pesta spesial buat kamu! 🥳✨</p></div>
-  <div class="sl"><div class="stk">📅🥳🎈</div><h2>Tebak Hari Ini Hari Apa?</h2><p>Hari ini adalah hari lahirnya salah satu orang paling seru, baik, dan paling spesial di dunia! 🎉</p></div>
-  <div class="sl"><div class="stk">🎂🐰💖</div><h2>Happy Birthday to You!</h2><p>Selamat bertambah usia ya! Semoga hari ini super meriah, penuh tawa, dan kebahagiaan tanpa henti! 🌟</p></div>
-  <div class="sl"><div class="stk">🌟🐻👏</div><h2>Kamu Keren Banget!</h2><p>Makasih udah bertahan dan berjuang hebat sejauh ini. Hari ini waktunya kamu dirayakan habis-habisan! 🎊</p></div>
-  <div class="sl"><div class="stk">🌈🍀✨</div><h2>Doa Terbaik Untukmu</h2><p>Semoga selalu sehat walafiat, rezekinya ngalir deras, dan selalu dikelilingi orang-orang baik! 💖</p></div>
-  <div class="sl"><div class="stk">🚀💫🏆</div><h2>Semua Impian Terkabul</h2><p>Apa pun rencana dan <i>wish list</i> kamu di usia yang baru ini, semoga semuanya terwujud tahun ini juga! Amin!</p></div>
+  <div class="sl act"><div class="stk-box"><div class="stk">🐸🎂</div></div><h2>HALO KAMU! ADA KEJUTAN!</h2><p>Ketuk layar atau pencet tombol di bawah buat buka 10 kartu lucu spesial hari ulang tahunmu! 🍀✨</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🦖🥳</div></div><h2>Tebak Hari Ini Hari Apa?</h2><p>Hari ini adalah hari lahirnya salah satu orang paling manis, lucu, dan paling berharga di dunia! 💚</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🐢🎉</div></div><h2>Happy Birthday to You!</h2><p>Selamat bertambah usia ya! Semoga hari ini dipenuhi tawa ceria dan kejutan-kejutan gemas! 🌱✨</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🥑💚</div></div><h2>Kamu Hebat Banget!</h2><p>Terima kasih udah bertahan dan berjuang sejauh ini. Kamu selalu jadi versi terbaik yang bikin bangga! 👏</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🍀🌈</div></div><h2>Doa Terbaik Untukmu</h2><p>Semoga selalu diberi kesehatan, keberuntungan melimpah seperti semanggi daun empat, dan bahagia terus! 💚</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🐊🚀</div></div><h2>Semua Impian Terkabul</h2><p>Apa pun rencana dan <i>wish list</i> kamu di usia yang baru ini, semoga segera terwujud satu per satu ya! Amin!</p></div>
   <div class="sl">
-    <div class="stk" id="slil">🕯️🎂🕯️</div>
+    <div class="stk-box"><div class="stk" id="slil">🕯️🎂🕯️</div></div>
     <h2>Make a Wish Dulu!</h2>
-    <div class="box" id="tlil" onclick="tiup()">👆 Berdoa dulu, lalu KLIK KOTAK INI buat tiup lilinnya!</div>
-    <p>Tiup lilinnya biar pestanya makin pecah! ✨</p>
+    <div class="box" id="tlil" onclick="tiup()">👆 Pejamkan mata, berdoa, lalu KLIK KOTAK INI buat tiup lilin!</div>
   </div>
   <div class="sl">
-    <h2>Pilih Satu Kado Misteri!</h2>
+    <h2>Pilih Satu Kado Hijau!</h2>
     <div class="grid">
-      <div class="kado" id="k1" onclick="buka(1,'🍦🍨','Es Krim & Jajan Enak Sepuasnya!')">🎁</div>
-      <div class="kado" id="k2" onclick="buka(2,'🧸💖','Pelukan Hangat & Kebahagiaan!')">🎁</div>
-      <div class="kado" id="k3" onclick="buka(3,'💸💰','Rezeki Nomplok & Dompet Tebal!')">🎁</div>
+      <div class="kado" id="k1" onclick="buka(1,'🧋🍦','Matcha Boba & Es Krim Sepuasnya!')">🎁</div>
+      <div class="kado" id="k2" onclick="buka(2,'🦖💚','Pelukan Hangat & Kebahagiaan!')">🎁</div>
+      <div class="kado" id="k3" onclick="buka(3,'🍀💸','Keberuntungan & Rezeki Nomplok!')">🎁</div>
     </div>
-    <div class="hadiah" id="bh"><span class="ghadiah" id="ih">🍦</span><strong id="nh" style="color:#c9184a;font-size:15px;"></strong></div>
-    <p id="pk" style="font-size:13.5px;color:#d6336c;">Klik kotak kadonya buat buka hadiah besar! 👆</p>
+    <div class="hadiah" id="bh"><span class="ghadiah" id="ih">🧋</span><strong id="nh" style="color:#1b4332;font-size:15px;"></strong></div>
+    <p id="pk" style="font-size:13.5px;color:#2d6a4f;">Klik kotak kadonya buat buka hadiah besar! 👆</p>
   </div>
-  <div class="sl"><div class="stk">🍕🍟🍔</div><h2>Jangan Lupa Traktiran!</h2><p>Pesta ulang tahun nggak sah kalau belum makan enak! Ditunggu traktirannya ya, hehe! 😜🥳</p></div>
-  <div class="sl"><div class="stk">🎆🐶🎂</div><h2>HAPPY BIRTHDAY ONCE AGAIN!</h2><p>Semoga tahun ini jadi tahun paling seru dan paling bahagia dalam hidupmu! Cheers! 🥂🥳💖</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🥝🍰</div></div><h2>Jangan Lupa Traktiran!</h2><p>Ulang tahun nggak lengkap tanpa jajan enak! Ditunggu traktirannya ya, hehe! 😜🥳</p></div>
+  <div class="sl"><div class="stk-box"><div class="stk">🐸🦖🎂</div></div><h2>HAPPY BIRTHDAY ONCE AGAIN!</h2><p>Semoga tahun ini jadi tahun paling seru, sehat, dan paling bahagia dalam hidupmu! Cheers! 💚🥳✨</p></div>
 
   <div class="nav">
     <button type="button" class="bk" id="bp" onclick="geser(-1)" style="display:none;">⬅️</button>
-    <button type="button" id="bn" onclick="geser(1)">Mulai Pesta + Lagu Nonstop 🎶</button>
+    <button type="button" id="bn" onclick="geser(1)">Lanjut Kartu ➡️</button>
   </div>
 </div>
 
@@ -80,10 +83,10 @@
     if (!loopAktif) mulaiLoopLagu();
     ledakan();
     sld[cur].classList.remove("act"); cur += d; sld[cur].classList.add("act");
-    document.getElementById("ind").innerText = "Slide " + (cur+1) + " / 10";
+    document.getElementById("ind").innerText = "Kartu " + (cur+1) + " / 10";
+    document.getElementById("bar").style.width = ((cur+1)*10) + "%";
     document.getElementById("bp").style.display = cur === 0 ? "none" : "block";
     document.getElementById("bn").style.display = cur === 9 ? "none" : "block";
-    document.getElementById("bn").innerText = "Lanjut Pesta ➡️";
   }
   function tiup() {
     document.getElementById("slil").innerText = "💨🍰✨";
@@ -98,7 +101,7 @@
     document.getElementById("bh").style.display = "block";
     ledakan();
   }
-  let ctxA, loopAktif = false, timerLagu;
+  let ctxA, loopAktif = false, timerLagu, sudahAuto = false;
   const nd = [[261.6,.32],[261.6,.32],[293.7,.64],[261.6,.64],[349.2,.64],[329.6,1],[261.6,.32],[261.6,.32],[293.7,.64],[261.6,.64],[392,.64],[349.2,1],[261.6,.32],[261.6,.32],[523.3,.64],[440,.64],[349.2,.64],[329.6,.64],[293.7,1],[466.2,.32],[466.2,.32],[440,.64],[349.2,.64],[392,.64],[349.2,1.1]];
   function mainSekali() {
     if (!loopAktif) return;
@@ -118,9 +121,14 @@
     if (loopAktif) { loopAktif = false; clearTimeout(timerLagu); document.getElementById("bm").innerText = "🔇 Lagu Dijeda"; }
     else { mulaiLoopLagu(); }
   }
+  function autoStart() { if (!sudahAuto) { sudahAuto = true; mulaiLoopLagu(); } }
+  window.addEventListener("load", autoStart);
+  document.addEventListener("click", autoStart, { once: true });
+  document.addEventListener("touchstart", autoStart, { once: true });
+
   let cv = document.getElementById("kf"), cx = cv.getContext("2d"), pt = [];
   cv.width = window.innerWidth; cv.height = window.innerHeight;
-  let em = ["🎉","💖","🎈","🎂","🍰","✨","🥳","🎁","🌟"];
+  let em = ["🍀","💚","🐸","🦖","🌱","✨","🎂","🧋","🎈"];
   for (let i=0; i<75; i++) pt.push({x:Math.random()*cv.width, y:Math.random()*cv.height, e:em[i%em.length], s:Math.random()*18+18, vx:(Math.random()-0.5)*1.5, vy:Math.random()*2+1.2});
   function ledakan() {
     for (let i=0; i<35; i++) pt.push({x:cv.width/2, y:cv.height/2, e:em[i%em.length], s:26, vx:(Math.random()-0.5)*14, vy:(Math.random()-0.5)*14});
