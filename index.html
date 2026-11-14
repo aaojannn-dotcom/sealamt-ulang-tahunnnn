@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂🎈</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        /* Stiker Melayang di Background */
+        .floating-sticker {
+            position: fixed;
+            font-size: 42px;
+            animation: floatUp 6s ease-in-out infinite;
+            z-index: 2;
+            user-select: none;
+        }
+        .s1 { top: 10%; left: 8%; animation-delay: 0s; }
+        .s2 { top: 15%; right: 10%; animation-delay: 1.5s; }
+        .s3 { bottom: 12%; left: 10%; animation-delay: 3s; }
+        .s4 { bottom: 15%; right: 8%; animation-delay: 2s; }
+
+        /* Kartu Utama */
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 18px 40px rgba(255, 71, 126, 0.25);
+            text-align: center;
+            max-width: 430px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            border: 4px solid #fff;
+        }
+        /* Stiker Karakter Lucu */
+        .sticker-main {
+            font-size: 75px;
+            display: inline-block;
+            animation: wiggle 1.5s infinite;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        h1 {
+            color: #ff477e;
+            font-size: 30px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0px #ffe3ec;
+        }
+        .name {
+            color: #ff758f;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        /* Interaksi Tiup Lilin */
+        .candle-box {
+            background: #fff5f8;
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            border: 2px dashed #ffb3c6;
+        }
+        .candle {
+            font-size: 48px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .candle:hover {
+            transform: scale(1.15);
+        }
+        .candle-hint {
+            font-size: 13px;
+            color: #d6336c;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .hidden-message {
+            display: none;
+            background: #ffe5ec;
+            padding: 15px;
+            border-radius: 16px;
+            color: #c9184a;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            background: linear-gradient(45deg, #ff477e, #ff758f);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(255, 71, 126, 0.35);
+            transition: transform 0.2s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .music-btn {
+            background: #ffd166;
+            color: #5c4000;
+            box-shadow: 0 6px 15px rgba(255, 209, 102, 0.4);
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Animasi */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-6deg) scale(1); }
+            50% { transform: rotate(6deg) scale(1.08); }
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stiker Lucu di Sudut Layar -->
+    <div class="floating-sticker s1">🎈</div>
+    <div class="floating-sticker s2">🧸</div>
+    <div class="floating-sticker s3">🎁</div>
+    <div class="floating-sticker s4">🥳</div>
+
+    <canvas id="confetti"></canvas>
+
+    <div class="card">
+        <!-- Stiker Karakter Utama (Bisa Diklik untuk Ganti Ekspresi) -->
+        <div class="sticker-main" id="cute-sticker" onclick="changeSticker()">🐱🎂</div>
+        
+        <h1>Happy Birthday!</h1>
+        <div class="name">Untuk Kamu yang Paling Lucu ✨</div>
+
+        <!-- Fitur Interaktif Tiup Lilin -->
+        <div class="candle-box">
+            <div class="candle" id="candle-emoji" onclick="blowCandle()">🕯️🎂🕯️</div>
+            <div class="candle-hint" id="candle-text">👆 Klik kuenya buat tiup lilin!</div>
+        </div>
+
+        <p>
+            Selamat bertambah usia! Semoga makin bahagia, rezekinya lancar, sehat selalu, dan semua wish kamu tahun ini terkabul ya! 🌈💖
+        </p>
+
+        <div class="hidden-message" id="surprise-box">
+            🎉 YEAY! Lilinnya udah mati! Semoga doanya terkabul! Jangan lupa makan enak & traktirannya ditunggu ya! 🍕🍦🥳
+        </div>
+
+        <div class="btn-group">
+            <button id="celebrate-btn" onclick="startParty()">🎉 Rayakan + Putar Lagu 🎶</button>
+            <button class="music-btn" id="music-toggle" onclick="toggleMusic()" style="display:none;">🔊 Putar Ulang Lagu Ultah</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Ganti Stiker Lucu saat diklik
+        const stickers = ["🐱🎂", "🐶🎉", "🐰🎁", "🐻🎈", "🦊🥳", "🐼🍰"];
+        let stickerIndex = 0;
+        function changeSticker() {
+            stickerIndex = (stickerIndex + 1) % stickers.length;
+            document.getElementById("cute-sticker").innerText = stickers[stickerIndex];
+        }
+
+        // 2. Fitur Tiup Lilin
+        let blown = false;
+        function blowCandle() {
+            if (!blown) {
+                document.getElementById("candle-emoji").innerText = "💨🍰✨";
+                document.getElementById("candle-text").innerText = "Yeay! Make a wish berhasil! 🌟";
+                blown = true;
+                startParty();
+            }
+        }
+
+        // 3. Pemutar Lagu "Happy Birthday" Otomatis (Web Audio API)
+        let audioCtx;
+        let isPlaying = false;
+
+        const notes = [
+            { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 1.0 },
+            { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.0 },
+            { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 523.25, d: 0.6 }, { f: 440.00, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 0.6 }, { f: 293.66, d: 1.0 },
+            { f: 466.16, d: 0.3 }, { f: 466.16, d: 0.3 }, { f: 440.00, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.2 }
+        ];
+
+        function playBirthdaySong() {
+            if (isPlaying) return;
+            isPlaying = true;
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            let time = audioCtx.currentTime + 0.1;
+            notes.forEach(note => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "triangle"; // Suara lembut seperti kotak musik
+                osc.frequency.setValueAtTime(note.f, time);
+                
+                gain.gain.setValueAtTime(0.25, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(time);
+                osc.stop(time + note.d);
+                time += note.d + 0.05;
+            });
+
+            setTimeout(() => { isPlaying = false; }, (time - audioCtx.currentTime) * 1000);
+        }
+
+        function toggleMusic() {
+            playBirthdaySong();
+        }
+
+        // 4. Konfeti & Stiker Jatuh
+        const canvas = document.getElementById("confetti");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let pieces = [];
+        const emojis = ["🎉", "💖", "⭐", "🎈", "🍰", "✨"];
+
+        function createConfetti() {
+            for (let i = 0; i < 60; i++) {
+                pieces.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    emoji: emojis[Math.floor(Math.random() * emojis.length)],
+                    size: Math.random() * 16 + 16,
+                    speed: Math.random() * 2.5 + 1.5,
+                    angle: Math.random() * 360
+                });
+            }
+        }
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pieces.forEach((p) => {
